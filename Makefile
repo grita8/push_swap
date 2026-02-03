@@ -3,7 +3,7 @@ NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I. -Ilibft -Ilibft/includes
 
-SRC = main.c push.c reverse.c rotate.c sorting5.c swap.c algo.c helper.c
+SRC = main.c push.c reverse.c rotate.c sorting5.c swap.c helper.c sort.c utils.c helper1.c check.c utils2.c
 OBJ = $(SRC:.c=.o)
 
 LIBFT = libft/libft.a

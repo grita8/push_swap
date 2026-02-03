@@ -37,3 +37,12 @@ int     pb(list_t **stack_a, list_t **stack_b)
         ft_putstr("pb\n");
         return (0);
 }
+
+void ft_putstr(char *str)
+{
+    while(*str)
+    {
+        write(1, str, 1);
+        str++;
+    }
+}
