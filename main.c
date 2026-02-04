@@ -70,17 +70,9 @@ int main(int argc, char **argv)
     is_it_null(argv, argc);
 	is_it_space(argv);
 
-    // stack_a = creat_stack(argc, argv);
-
     args = join_args(argc, argv);
-    printf("Joined: '%s'\n", args);
     strs = split_args(args);
     create_stack_a(strs, &stack_a, args); 
-
-// list_t *creat_stack_from_split(char **two_d, list_t *list, char *s, char *joined_args)
-
-
-    printf("split: '%s'\n", args);
     check(&stack_a, strs, args);
     sort_stack(&stack_a, &stack_b);
     print_stack(stack_a);
