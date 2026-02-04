@@ -67,20 +67,19 @@ list_t *new_node(int content)
     return node;
 }
 
-void add_back(list_t **stack, list_t *new)
+void	add_back(list_t **head, int content)
 {
-    list_t *tmp;
+	list_t	*node;
+	list_t	*current;
 
-     if (!stack || !new)
-        return;
-    
-    if (!*stack)
-    {
-        *stack = new;
-        return;
-    }
-    tmp = *stack;
-    while (tmp->next)
-        tmp = tmp->next;
-    tmp->next = new;
+	node = new_node(content);
+	if (*head == NULL)
+	{
+		*head = node;
+		return ;
+	}
+	current = *head;
+	while (current->next)
+		current = current->next;
+	current->next = node;
 }

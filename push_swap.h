@@ -13,6 +13,14 @@ typedef struct stack_list
     struct stack_list   *next;
 } list_t;
 
+typedef struct s_atoa_state
+{
+	int					i;
+	long				result;
+	int					signe;
+	int					tmp;
+}						t_atoa_state;
+
 typedef struct s_state
 {
     int i;
@@ -22,14 +30,6 @@ typedef struct s_state
     int end;
     char **tow_d;
 }       t_state; 
-
-typedef struct s_atoa_state
-{
-	int					i;
-	long				result;
-	int					signe;
-	int					tmp;
-}						t_atoa_state;
 
 int	is_it_alpha(char *str, int *i);
 void	check_int_overflow(long number, list_t *list, char **two_d,
@@ -46,7 +46,8 @@ void initialise(t_state *state, char *args);
 char *ft_strcopy(char *str, int start, int end);
 char **split_args(char *args);
 int	count_word(char *args);
-list_t *creat_stack_from_split(char **two_d, list_t *list, char **all_args, char *joined_args);
+void	create_stack_a(char **two_d, list_t **list, char *args);
+
 
 int stack_size(list_t *stack);
 void	check_is_sorted(int value, list_t **list, char **two_d,
@@ -60,7 +61,7 @@ void	check(list_t **a, char **two_d, char *args);
 
 void	is_it_null(char **argv, int argc);
 list_t  *new_node(int content);
-void    add_back(list_t **stack, list_t *new);
+void    add_back(list_t **stack, int content);
 list_t  *creat_stack(int argc, char **argv);
 void    ft_putnbr(int nb);
 void    free_stack(list_t *stack);
@@ -105,5 +106,4 @@ int	rra(list_t **stack_a);
 int	rrb(list_t **stack_a);
 int rrr(list_t **stack_a, list_t **stack_b, int index);
 
-// int	is_sorted(list_t *list);
 #endif

@@ -61,8 +61,8 @@ int main(int argc, char **argv)
 {
     char			*args;
 	char			**strs;
-    list_t *stack_a = NULL;
-    list_t *stack_b = NULL;
+    list_t *stack_a;
+    list_t *stack_b;
 
     if (argc < 2)
         return 1;
@@ -75,8 +75,8 @@ int main(int argc, char **argv)
     args = join_args(argc, argv);
     printf("Joined: '%s'\n", args);
     strs = split_args(args);
-    stack_a = creat_stack_from_split(strs, stack_a, argv, args); 
-	
+    create_stack_a(strs, &stack_a, args); 
+
 // list_t *creat_stack_from_split(char **two_d, list_t *list, char *s, char *joined_args)
 
 

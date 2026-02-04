@@ -43,47 +43,31 @@ void	init_vars(t_atoa_state *vars)
 	vars->result = 0;
 	vars->signe = 1;
 }
+
 int	ff_atoi(char *str, list_t *list, char **two_d, char *args)
 {
-    long result = 0;
-    int sign = 1;
-    int i = 0;
-    int digit_found = 0;
+	t_atoa_state	vars;
 
-    // Skip leading whitespace
-    while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' ||
-           str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
-        i++;
-
-    // Handle optional sign
-    if (str[i] == '-' || str[i] == '+')
-    {
-        if (str[i] == '-')
-            sign = -1;
-        i++;
-    }
-
-    // Main digit loop
-    while (str[i] >= '0' && str[i] <= '9')
-    {
-        digit_found = 1;
-        result = result * 10 + (str[i] - '0');
-        check_int_overflow(result * sign, list, two_d, args);
-        i++;
-    }
-
-    // If no digits found --> error/exit
-    if (!digit_found)
-        else_of_atoi(&list, two_d, args);
-
-    // After number, ONLY whitespace allowed, else error/exit
-    while (str[i])
-    {
-        if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n' &&
-            str[i] != '\v' && str[i] != '\f' && str[i] != '\r')
-            else_of_atoi(&list, two_d, args);
-        i++;
-    }
-
-    return ((int)(result * sign));
+	init_vars(&vars);
+	while (str[vars.i] == '\t' || str[vars.i] == '\n' || str[vars.i] == '\v'
+		|| str[vars.i] == '\f' || str[vars.i] == '\r' || str[vars.i] == ' ')
+		vars.i++;
+	vars.i = 0;
+	if (str[vars.i] == '-' || str[vars.i] == '+')
+	{
+		if (str[vars.i] == '-')
+			vars.signe = -1;
+		vars.i++;
+	}
+	vars.tmp = vars.i;
+	if (is_it_alpha(str, &vars.i) || !(str[vars.tmp] >= '0'
+			&& str[vars.tmp] <= '9'))
+		else_of_atoi(&list, two_d, args);
+	while (str[vars.tmp] >= '0' && str[vars.tmp] <= '9')
+	{
+		vars.result = vars.result * 10 + str[vars.tmp] - 48;
+		check_int_overflow(vars.result * vars.signe, list, two_d, args);
+		vars.tmp++;
+	}
+	return ((int)(vars.result * vars.signe));
 }
