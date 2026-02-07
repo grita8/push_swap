@@ -1,12 +1,14 @@
-NAME = push_swap
+NAME		= push_swap
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror -I. -Ilibft -Ilibft/includes
+CC			= cc
+CFLAGS		= -Wall -Wextra -Werror -I. -Ilibft -Ilibft/includes
 
-SRC = main.c push.c reverse.c rotate.c sorting5.c swap.c helper.c sort.c utils.c helper1.c check.c utils2.c
-OBJ = $(SRC:.c=.o)
+SRC			= main.c push.c reverse.c rotate.c sorting5.c swap.c \
+			  helper.c sort.c utils.c helper1.c check.c utils2.c \
+			  algo.c algo1.c chek1.c
+OBJ			= $(SRC:.c=.o)
 
-LIBFT = libft/libft.a
+LIBFT		= libft/libft.a
 
 all: $(LIBFT) $(NAME)
 
@@ -21,9 +23,10 @@ $(LIBFT):
 
 clean:
 	rm -f $(OBJ)
-	make -C libft fclean
+	make -C libft clean
 
 fclean: clean
 	rm -f $(NAME)
+	make -C libft fclean
 
 re: fclean all

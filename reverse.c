@@ -1,50 +1,45 @@
 #include "push_swap.h"
-int reverse_rotate_stack_a(list_t **stack_a)
+
+int	reverse_rotate_stack_a(list_t **stack_a)
 {
-    list_t *last;
-    list_t *prev;
+	list_t	*last;
+	list_t	*prev;
 
-    if (!stack_a || !*stack_a || !(*stack_a)->next)
-        return (0);
-
-    prev = NULL;
-    last = *stack_a;
-
-    while (last->next)
-    {
-        prev = last;
-        last = last->next;
-    }
-
-    prev->next = NULL;     
-    last->next = *stack_a; 
-    *stack_a = last;       
-    return (1);
+	if (!stack_a || !*stack_a || !(*stack_a)->next)
+		return (0);
+	prev = NULL;
+	last = *stack_a;
+	while (last->next)
+	{
+		prev = last;
+		last = last->next;
+	}
+	prev->next = NULL;
+	last->next = *stack_a;
+	*stack_a = last;
+	return (1);
 }
 
-int reverse_rotate_stack_b(list_t **atack_b)
+int	reverse_rotate_stack_b(list_t **stack_b)
 {
-    list_t *last;
-    list_t *prev;
+	list_t	*last;
+	list_t	*prev;
 
-    if (!atack_b || !*atack_b || !(*atack_b)->next)
-        return (0);
-
-    prev = NULL;
-    last = *atack_b;
-
-    while (last->next)
-    {
-        prev = last;
-        last = last->next;
-    }
-
-    prev->next = NULL;    
-    last->next = *atack_b;  
-    *atack_b = last;        
-
-    return (1);
+	if (!stack_b || !*stack_b || !(*stack_b)->next)
+		return (0);
+	prev = NULL;
+	last = *stack_b;
+	while (last->next)
+	{
+		prev = last;
+		last = last->next;
+	}
+	prev->next = NULL;
+	last->next = *stack_b;
+	*stack_b = last;
+	return (1);
 }
+
 int	rra(list_t **stack_a)
 {
 	if (!reverse_rotate_stack_a(stack_a))

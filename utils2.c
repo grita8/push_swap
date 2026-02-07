@@ -6,22 +6,19 @@ int	is_it_alpha(char *str, int *i)
 		return (1);
 	while (str[*i])
 	{
-		if (!(((str[*i] >= '0' && str[*i] <= '9'))))
-		{
+		if (!((str[*i] >= '0' && str[*i] <= '9')))
 			return (1);
-		}
 		(*i)++;
 	}
 	return (0);
 }
 
-void	check_int_overflow(long number, list_t *list, char **two_d,
-		char *args)
+void	check_int_overflow(long number, list_t *list, char **two_d, char *args)
 {
 	if (number > INT_MAX || number < INT_MIN)
 	{
 		write(2, "Error\n", 6);
-	    free_stack(list);
+		free_stack(list);
 		ftt_free(two_d);
 		free(args);
 		exit(1);
@@ -49,8 +46,10 @@ int	ff_atoi(char *str, list_t *list, char **two_d, char *args)
 	t_atoa_state	vars;
 
 	init_vars(&vars);
-	while (str[vars.i] == '\t' || str[vars.i] == '\n' || str[vars.i] == '\v'
-		|| str[vars.i] == '\f' || str[vars.i] == '\r' || str[vars.i] == ' ')
+	while (str[vars.i] == '\t' || str[vars.i] == '\n'
+		|| str[vars.i] == '\v'
+		|| str[vars.i] == '\f' || str[vars.i] == '\r'
+		|| str[vars.i] == ' ')
 		vars.i++;
 	vars.i = 0;
 	if (str[vars.i] == '-' || str[vars.i] == '+')

@@ -11,19 +11,20 @@ int	is_sorted(list_t *list)
 	return (1);
 }
 
-int stack_size(list_t *stack)
+int	stack_size(list_t *stack)
 {
-    int size = 0;
+	int	size;
 
-    while (stack)
-    {
-        size++;
-        stack = stack->next;
-    }
-    return size;
+	size = 0;
+	while (stack)
+	{
+		size++;
+		stack = stack->next;
+	}
+	return (size);
 }
-void	check_is_sorted(int value, list_t **list, char **two_d,
-		char *args)
+
+void	check_is_sorted(int value, list_t **list, char **two_d, char *args)
 {
 	if (value)
 	{
@@ -34,8 +35,7 @@ void	check_is_sorted(int value, list_t **list, char **two_d,
 	}
 }
 
-void	check_is_duplicated(int value, list_t **list, char **two_d,
-		char *args)
+void	check_is_duplicated(int value, list_t **list, char **two_d, char *args)
 {
 	if (value)
 	{
@@ -65,22 +65,4 @@ int	is_duplicated(list_t *list)
 		tmp1 = tmp1->next;
 	}
 	return (0);
-}
-
-void	is_lst_size(list_t **list, char **two_d, char *args)
-{
-	if (stack_size(*list) == 1)
-	{
-		free_stack(*list);
-		ftt_free(two_d);
-		free(args);
-		exit(1);
-	}
-}
-
-void	check(list_t **a, char **two_d, char *args)
-{
-	is_lst_size(a, two_d, args);
-	check_is_duplicated(is_duplicated(*a), a, two_d, args);
-	check_is_sorted(sorted(a), a, two_d, args);
 }

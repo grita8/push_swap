@@ -1,6 +1,6 @@
 #include "push_swap.h"
-
 #include <stdio.h>
+
 void	is_it_space(char **str)
 {
 	int	i;
@@ -29,7 +29,6 @@ void	is_it_space(char **str)
 	}
 }
 
-
 void	is_it_null(char **argv, int argc)
 {
 	int	i;
@@ -46,38 +45,44 @@ void	is_it_null(char **argv, int argc)
 	}
 }
 
-void print_stack(list_t *stack)
+void	print_stack(list_t *stack)
 {
-    while (stack)
-    {
-        ft_putnbr(stack->content);
-        write(1, " ", 1);
-        stack = stack->next;
-    }
-    write(1, "\n", 1);
+	while (stack)
+	{
+		ft_putnbr(stack->content);
+		write(1, " ", 1);
+		stack = stack->next;
+	}
+	write(1, "\n", 1);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    char			*args;
-	char			**strs;
-    list_t *stack_a;
-    list_t *stack_b;
+	char	*args;
+	char	**strs;
+	list_t	*stack_a;
+	list_t	*stack_b;
 
-    if (argc < 2)
-        return 1;
-
-    is_it_null(argv, argc);
+	stack_a = NULL;
+	stack_b = NULL;
+	if (argc < 2)
+		return (1);
+	is_it_null(argv, argc);
 	is_it_space(argv);
+	args = join_args(argc, argv);
+	strs = split_args(args);
+	create_stack_a(strs, &stack_a, args);
 
-    args = join_args(argc, argv);
-    strs = split_args(args);
-    create_stack_a(strs, &stack_a, args); 
-    check(&stack_a, strs, args);
-    sort_stack(&stack_a, &stack_b);
-    print_stack(stack_a);
-    
-    ftt_free(strs); 
-    free_stack(stack_a);
-    return 0;
+	fprintf(stderr, "stack_size(stack_a): %d\n", stack_size(stack_a));
+	check(&stack_a, strs, args);
+	if (stack_size(stack_a) <= 5)
+		sort_stack(&stack_a, &stack_b);
+	else
+		algo(&stack_a, &stack_b);
+
+	print_stack(stack_a);
+	ftt_free(strs);
+	free_stack(stack_a);
+	free(args);
+	return (0);
 }
