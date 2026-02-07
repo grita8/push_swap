@@ -73,7 +73,6 @@ int	main(int argc, char **argv)
 	strs = split_args(args);
 	create_stack_a(strs, &stack_a, args);
 
-	fprintf(stderr, "stack_size(stack_a): %d\n", stack_size(stack_a));
 	check(&stack_a, strs, args);
 	if (stack_size(stack_a) <= 5)
 		sort_stack(&stack_a, &stack_b);
