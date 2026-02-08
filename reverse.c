@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   reverse.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zichajia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/08 14:02:47 by zichajia          #+#    #+#             */
+/*   Updated: 2026/02/08 14:02:51 by zichajia         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int	reverse_rotate_stack_a(list_t **stack_a)
+int	reverse_rotate_stack_a(t_stack **stack_a)
 {
-	list_t	*last;
-	list_t	*prev;
+	t_stack	*last;
+	t_stack	*prev;
 
 	if (!stack_a || !*stack_a || !(*stack_a)->next)
 		return (0);
@@ -20,10 +32,10 @@ int	reverse_rotate_stack_a(list_t **stack_a)
 	return (1);
 }
 
-int	reverse_rotate_stack_b(list_t **stack_b)
+int	reverse_rotate_stack_b(t_stack **stack_b)
 {
-	list_t	*last;
-	list_t	*prev;
+	t_stack	*last;
+	t_stack	*prev;
 
 	if (!stack_b || !*stack_b || !(*stack_b)->next)
 		return (0);
@@ -40,7 +52,7 @@ int	reverse_rotate_stack_b(list_t **stack_b)
 	return (1);
 }
 
-int	rra(list_t **stack_a)
+int	rra(t_stack **stack_a)
 {
 	if (!reverse_rotate_stack_a(stack_a))
 		return (-1);
@@ -48,7 +60,7 @@ int	rra(list_t **stack_a)
 	return (0);
 }
 
-int	rrb(list_t **stack_b)
+int	rrb(t_stack **stack_b)
 {
 	if (!reverse_rotate_stack_b(stack_b))
 		return (-1);
@@ -56,7 +68,7 @@ int	rrb(list_t **stack_b)
 	return (0);
 }
 
-int	rrr(list_t **stack_a, list_t **stack_b, int index)
+int	rrr(t_stack **stack_a, t_stack **stack_b, int index)
 {
 	if (!reverse_rotate_stack_a(stack_a) && !reverse_rotate_stack_b(stack_b))
 		return (-1);

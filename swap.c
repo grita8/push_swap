@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   swap.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zichajia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/08 14:05:10 by zichajia          #+#    #+#             */
+/*   Updated: 2026/02/08 14:05:23 by zichajia         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int	swap_stack_a(list_t **stack_a)
+int	swap_stack_a(t_stack **stack_a)
 {
-	list_t	*first;
-	list_t	*second;
+	t_stack	*first;
+	t_stack	*second;
 
 	if ((!stack_a) || !(*stack_a) || !((*stack_a)->next))
 		return (0);
@@ -15,10 +27,10 @@ int	swap_stack_a(list_t **stack_a)
 	return (1);
 }
 
-int	swap_stack_b(list_t **stack_b)
+int	swap_stack_b(t_stack **stack_b)
 {
-	list_t	*first;
-	list_t	*second;
+	t_stack	*first;
+	t_stack	*second;
 
 	if (!stack_b || !(*stack_b) || !((*stack_b)->next))
 		return (0);
@@ -30,7 +42,7 @@ int	swap_stack_b(list_t **stack_b)
 	return (1);
 }
 
-int	sa(list_t **stack_a)
+int	sa(t_stack **stack_a)
 {
 	if (!swap_stack_a(stack_a))
 		return (-1);
@@ -38,7 +50,7 @@ int	sa(list_t **stack_a)
 	return (0);
 }
 
-int	sb(list_t **stack_b)
+int	sb(t_stack **stack_b)
 {
 	if (!swap_stack_b(stack_b))
 		return (-1);
@@ -46,7 +58,7 @@ int	sb(list_t **stack_b)
 	return (0);
 }
 
-int	ss(list_t **stack_a, list_t **stack_b, int index)
+int	ss(t_stack **stack_a, t_stack **stack_b, int index)
 {
 	if (!swap_stack_a(stack_a) && !swap_stack_b(stack_b))
 		return (-1);

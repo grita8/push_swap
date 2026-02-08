@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   chek1.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zichajia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/08 14:01:58 by zichajia          #+#    #+#             */
+/*   Updated: 2026/02/08 14:02:05 by zichajia         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void	is_lst_size(list_t **list, char **two_d, char *args)
+void	is_lst_size(t_stack **list, char **two_d, char *args)
 {
 	if (stack_size(*list) == 1)
 	{
@@ -11,7 +23,7 @@ void	is_lst_size(list_t **list, char **two_d, char *args)
 	}
 }
 
-void	check(list_t **a, char **two_d, char *args)
+void	check(t_stack **a, char **two_d, char *args)
 {
 	is_lst_size(a, two_d, args);
 	check_is_duplicated(is_duplicated(*a), a, two_d, args);

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zichajia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/08 13:59:10 by zichajia          #+#    #+#             */
+/*   Updated: 2026/02/08 13:59:15 by zichajia         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int	is_sorted(list_t *list)
+int	is_sorted(t_stack *list)
 {
 	while (list->next)
 	{
@@ -11,7 +23,7 @@ int	is_sorted(list_t *list)
 	return (1);
 }
 
-int	stack_size(list_t *stack)
+int	stack_size(t_stack *stack)
 {
 	int	size;
 
@@ -24,7 +36,7 @@ int	stack_size(list_t *stack)
 	return (size);
 }
 
-void	check_is_sorted(int value, list_t **list, char **two_d, char *args)
+void	check_is_sorted(int value, t_stack **list, char **two_d, char *args)
 {
 	if (value)
 	{
@@ -35,7 +47,7 @@ void	check_is_sorted(int value, list_t **list, char **two_d, char *args)
 	}
 }
 
-void	check_is_duplicated(int value, list_t **list, char **two_d, char *args)
+void	check_is_duplicated(int value, t_stack **list, char **two_d, char *args)
 {
 	if (value)
 	{
@@ -47,10 +59,10 @@ void	check_is_duplicated(int value, list_t **list, char **two_d, char *args)
 	}
 }
 
-int	is_duplicated(list_t *list)
+int	is_duplicated(t_stack *list)
 {
-	list_t	*tmp1;
-	list_t	*tmp2;
+	t_stack	*tmp1;
+	t_stack	*tmp2;
 
 	tmp1 = list;
 	while (tmp1 != NULL)

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   algo1.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zichajia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/08 13:58:19 by zichajia          #+#    #+#             */
+/*   Updated: 2026/02/08 13:58:31 by zichajia         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	put_chunk(int len_a)
@@ -21,7 +33,7 @@ void	increment(int *i, int *chunk, int len)
 		(*chunk)++;
 }
 
-void	check_b(list_t **stack_b)
+void	check_b(t_stack **stack_b)
 {
 	if (!stack_b || !*stack_b || !(*stack_b)->next)
 		return ;
@@ -29,7 +41,7 @@ void	check_b(list_t **stack_b)
 		sb(stack_b);
 }
 
-void	push_to_b(list_t **stack_a, list_t **stack_b, int *arr, int len_a)
+void	push_to_b(t_stack **stack_a, t_stack **stack_b, int *arr, int len_a)
 {
 	int	i;
 	int	chunk;
@@ -42,36 +54,22 @@ void	push_to_b(list_t **stack_a, list_t **stack_b, int *arr, int len_a)
 	max_rot = stack_size(*stack_a);
 	while (*stack_a)
 	{
-		if ((*stack_a)->content <= arr[i])
-		{
-			pb(stack_a, stack_b);
+		if ((*stack_a)->content <= arr[i] && pb(stack_a, stack_b))
 			rb(stack_b);
-			increment(&i, &chunk, len_a);
-			count = 0;
-			max_rot = stack_size(*stack_a);
-		}
-		else if ((*stack_a)->content <= arr[chunk])
-		{
+		if ((*stack_a)->content <= arr[chunk] || count >= max_rot)
 			pb(stack_a, stack_b);
-			increment(&i, &chunk, len_a);
-			count = 0;
-			max_rot = stack_size(*stack_a);
-		}
-		else
-		{
-			ra(stack_a);
+		else if (ra(stack_a) || 1)
 			count++;
-		}
-		if (count >= max_rot)
+		if ((*stack_a && (*stack_a)->content <= arr[chunk]) || count >= max_rot)
 		{
-			pb(stack_a, stack_b);
+			increment(&i, &chunk, len_a);
 			count = 0;
 			max_rot = stack_size(*stack_a);
 		}
 	}
 }
 
-void	push_to_a(list_t **stack_a, list_t **stack_b)
+void	push_to_a(t_stack **stack_a, t_stack **stack_b)
 {
 	int	len_b;
 	int	p;

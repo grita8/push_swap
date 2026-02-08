@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zichajia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/08 14:03:19 by zichajia          #+#    #+#             */
+/*   Updated: 2026/02/08 14:03:26 by zichajia         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -10,7 +22,7 @@ typedef struct stack_list
 {
 	int					content;
 	struct stack_list	*next;
-}						list_t;
+}						t_stack;
 
 typedef struct s_atoa_state
 {
@@ -30,18 +42,19 @@ typedef struct s_state
 	char	**tow_d;
 }			t_state;
 
-int		*fill_arr(list_t *stack_a);
+int		*fill_arr(t_stack *stack_a);
 void	sorted_arr(int *arr, int len);
 int		put_chunk(int len_a);
 void	increment(int *i, int *chunk, int len);
-void	push_to_b(list_t **stack_a, list_t **stack_b, int *arr, int len_a);
-void	algo(list_t **stack_a, list_t **stack_b);
-void	push_to_a(list_t **stack_a, list_t **stack_b);
+void	push_to_b(t_stack **stack_a, t_stack **stack_b, int *arr, int len_a);
+void	algo(t_stack **stack_a, t_stack **stack_b);
+void	push_to_a(t_stack **stack_a, t_stack **stack_b);
 int		is_it_alpha(char *str, int *i);
-void	check_int_overflow(long number, list_t *list, char **two_d, char *args);
+void	check_int_overflow(long number, t_stack *list,
+			char **two_d, char *args);
 void	init_vars(t_atoa_state *vars);
-int		ff_atoi(char *str, list_t *list, char **two_d, char *args);
-void	else_of_atoi(list_t **list, char **two_d, char *args);
+int		ff_atoi(char *str, t_stack *list, char **two_d, char *args);
+void	else_of_atoi(t_stack **list, char **two_d, char *args);
 char	*join_args(int argc, char **argv);
 char	*ft_sstrjoin(char *save, char *buff);
 char	*ftt_free(char **arr);
@@ -49,55 +62,54 @@ void	initialise(t_state *state, char *args);
 char	*ft_strcopy(char *str, int start, int end);
 char	**split_args(char *args);
 int		count_word(char *args);
-void	create_stack_a(char **two_d, list_t **list, char *args);
-int		stack_size(list_t *stack);
-void	check_is_sorted(int value, list_t **list, char **two_d, char *args);
-void	check_is_duplicated(int value, list_t **list, char **two_d, char *args);
-void	is_lst_size(list_t **list, char **two_d, char *args);
-int		is_duplicated(list_t *list);
-void	check(list_t **a, char **two_d, char *args);
+void	create_stack_a(char **two_d, t_stack **list, char *args);
+int		stack_size(t_stack *stack);
+void	check_is_sorted(int value, t_stack **list, char **two_d, char *args);
+void	check_is_duplicated(int value, t_stack **list,
+			char **two_d, char *args);
+void	is_lst_size(t_stack **list, char **two_d, char *args);
+int		is_duplicated(t_stack *list);
+void	check(t_stack **a, char **two_d, char *args);
 void	is_it_null(char **argv, int argc);
-list_t	*new_node(int content);
-void	add_back(list_t **stack, int content);
-list_t	*creat_stack(int argc, char **argv);
-void	ft_putnbr(int nb);
-void	free_stack(list_t *stack);
-int		swap_stack_b(list_t **stack_b);
-int		swap_stack_a(list_t **stack_a);
+t_stack	*new_node(int content);
+void	add_back(t_stack **stack, int content);
+void	free_stack(t_stack *stack);
+int		swap_stack_b(t_stack **stack_b);
+int		swap_stack_a(t_stack **stack_a);
 void	ft_putstr(char *str);
 
-void	push_min_to_b(list_t **stack_a, list_t **stack_b);
-int		min_position(list_t **stack);
-int		max_position(list_t **stack_a);
-void	sort_stack(list_t **stack_a, list_t **stack_b);
-void	sort2(list_t **stack_a);
-void	sort3(list_t **stack_a);
-void	sort4(list_t **stack_a, list_t **stack_b);
-void	sort5(list_t **stack_a, list_t **stack_b);
-int		sorted(list_t **stack_a);
+void	push_min_to_b(t_stack **stack_a, t_stack **stack_b);
+int		min_position(t_stack **stack);
+int		max_position(t_stack **stack_a);
+void	sort_stack(t_stack **stack_a, t_stack **stack_b);
+void	sort2(t_stack **stack_a);
+void	sort3(t_stack **stack_a);
+void	sort4(t_stack **stack_a, t_stack **stack_b);
+void	sort5(t_stack **stack_a, t_stack **stack_b);
+int		sorted(t_stack **stack_a);
 
-int		sa(list_t **stack_b);
-int		sb(list_t **stack_b);
-int		ss(list_t **stack_a, list_t **stack_b, int index);
+int		sa(t_stack **stack_b);
+int		sb(t_stack **stack_b);
+int		ss(t_stack **stack_a, t_stack **stack_b, int index);
 
-int		push_a(list_t **stack_a, list_t **stack_b);
-int		push_b(list_t **stack_a, list_t **stack_b);
+int		push_a(t_stack **stack_a, t_stack **stack_b);
+int		push_b(t_stack **stack_a, t_stack **stack_b);
 
-int		pb(list_t **stack_a, list_t **stack_b);
-int		pa(list_t **stack_a, list_t **stack_b);
+int		pb(t_stack **stack_a, t_stack **stack_b);
+int		pa(t_stack **stack_a, t_stack **stack_b);
 
-int		rotate_stack_a(list_t **stack_b);
-int		rotate_stack_b(list_t **stack_b);
+int		rotate_stack_a(t_stack **stack_b);
+int		rotate_stack_b(t_stack **stack_b);
 
-int		ra(list_t **stack_a);
-int		rb(list_t **stack_a);
-int		rr(list_t **stack_a, list_t **stack_b, int index);
+int		ra(t_stack **stack_a);
+int		rb(t_stack **stack_a);
+int		rr(t_stack **stack_a, t_stack **stack_b, int index);
 
-int		reverse_rotate_stack_a(list_t **stack_a);
-int		reverse_rotate_stack_b(list_t **stack_b);
+int		reverse_rotate_stack_a(t_stack **stack_a);
+int		reverse_rotate_stack_b(t_stack **stack_b);
 
-int		rra(list_t **stack_a);
-int		rrb(list_t **stack_a);
-int		rrr(list_t **stack_a, list_t **stack_b, int index);
+int		rra(t_stack **stack_a);
+int		rrb(t_stack **stack_a);
+int		rrr(t_stack **stack_a, t_stack **stack_b, int index);
 
 #endif

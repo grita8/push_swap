@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sorting5.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zichajia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/08 15:47:56 by zichajia          #+#    #+#             */
+/*   Updated: 2026/02/08 15:48:04 by zichajia         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void	sort2(list_t **stack_a)
+void	sort2(t_stack **stack_a)
 {
-	list_t	*first;
-	list_t	*second;
+	t_stack	*first;
+	t_stack	*second;
 
 	first = *stack_a;
 	second = first->next;
@@ -11,7 +23,7 @@ void	sort2(list_t **stack_a)
 		sa(stack_a);
 }
 
-void	sort3(list_t **stack_a)
+void	sort3(t_stack **stack_a)
 {
 	int	max_pos;
 
@@ -26,7 +38,7 @@ void	sort3(list_t **stack_a)
 		sa(stack_a);
 }
 
-void	sort4(list_t **stack_a, list_t **stack_b)
+void	sort4(t_stack **stack_a, t_stack **stack_b)
 {
 	int	max_pos;
 
@@ -48,46 +60,31 @@ void	sort4(list_t **stack_a, list_t **stack_b)
 	ra(stack_a);
 }
 
-void	push_min_to_b(list_t **stack_a, list_t **stack_b)
+void	push_min_to_b(t_stack **stack_a, t_stack **stack_b)
 {
 	int	size;
 	int	pos;
 
 	size = stack_size(*stack_a);
 	pos = min_position(stack_a);
-	if (size == 5)
-	{
-		if (pos == 1)
-			ra(stack_a);
-		else if (pos == 2)
-		{
-			ra(stack_a);
-			ra(stack_a);
-		}
-		else if (pos == 3)
-		{
-			rra(stack_a);
-			rra(stack_a);
-		}
-		else if (pos == 4)
-			rra(stack_a);
-	}
-	else if (size == 4)
-	{
-		if (pos == 1)
-			ra(stack_a);
-		else if (pos == 2)
-		{
-			ra(stack_a);
-			ra(stack_a);
-		}
-		else if (pos == 3)
-			rra(stack_a);
-	}
+	if (size == 5 && pos == 1)
+		ra(stack_a);
+	else if (size == 5 && pos == 2)
+		(ra(stack_a), ra(stack_a));
+	else if (size == 5 && pos == 3)
+		(rra(stack_a), rra(stack_a));
+	else if (size == 5 && pos == 4)
+		rra(stack_a);
+	else if (size == 4 && pos == 1)
+		ra(stack_a);
+	else if (size == 4 && pos == 2)
+		(ra(stack_a), ra(stack_a));
+	else if (size == 4 && pos == 3)
+		rra(stack_a);
 	pb(stack_a, stack_b);
 }
 
-void	sort5(list_t **stack_a, list_t **stack_b)
+void	sort5(t_stack **stack_a, t_stack **stack_b)
 {
 	if (sorted(stack_a))
 		return ;

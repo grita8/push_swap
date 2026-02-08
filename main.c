@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zichajia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/08 14:01:22 by zichajia          #+#    #+#             */
+/*   Updated: 2026/02/08 14:01:25 by zichajia         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-#include <stdio.h>
 
 void	is_it_space(char **str)
 {
@@ -45,23 +56,12 @@ void	is_it_null(char **argv, int argc)
 	}
 }
 
-void	print_stack(list_t *stack)
-{
-	while (stack)
-	{
-		ft_putnbr(stack->content);
-		write(1, " ", 1);
-		stack = stack->next;
-	}
-	write(1, "\n", 1);
-}
-
 int	main(int argc, char **argv)
 {
 	char	*args;
 	char	**strs;
-	list_t	*stack_a;
-	list_t	*stack_b;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 
 	stack_a = NULL;
 	stack_b = NULL;
@@ -72,14 +72,11 @@ int	main(int argc, char **argv)
 	args = join_args(argc, argv);
 	strs = split_args(args);
 	create_stack_a(strs, &stack_a, args);
-
 	check(&stack_a, strs, args);
 	if (stack_size(stack_a) <= 5)
 		sort_stack(&stack_a, &stack_b);
 	else
 		algo(&stack_a, &stack_b);
-
-	print_stack(stack_a);
 	ftt_free(strs);
 	free_stack(stack_a);
 	free(args);

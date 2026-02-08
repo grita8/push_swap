@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   algo.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zichajia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/08 13:58:46 by zichajia          #+#    #+#             */
+/*   Updated: 2026/02/08 13:58:49 by zichajia         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	sorted_arr(int *arr, int len)
@@ -24,7 +36,7 @@ void	sorted_arr(int *arr, int len)
 	}
 }
 
-int	*fill_arr(list_t *stack_a)
+int	*fill_arr(t_stack *stack_a)
 {
 	int	len;
 	int	*arr;
@@ -43,7 +55,7 @@ int	*fill_arr(list_t *stack_a)
 	return (arr);
 }
 
-void	algo(list_t **stack_a, list_t **stack_b)
+void	algo(t_stack **stack_a, t_stack **stack_b)
 {
 	int	len_a;
 	int	*arr;
@@ -65,9 +77,9 @@ void	algo(list_t **stack_a, list_t **stack_b)
 	push_to_a(stack_a, stack_b);
 }
 
-int	max_ind(list_t **stack_b)
+int	max_ind(t_stack **stack_b)
 {
-	list_t	*go;
+	t_stack	*go;
 	int		max;
 	int		position_of_max;
 	int		position;

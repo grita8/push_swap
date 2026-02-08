@@ -1,24 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   helper.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zichajia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/08 14:18:21 by zichajia          #+#    #+#             */
+/*   Updated: 2026/02/08 14:18:48 by zichajia         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-char	*ft_sstrjoin(char *save, char *buff)
+static char	*handle_null_cases(char *save, char *buff)
 {
-	size_t	i;
-	size_t	j;
-	int		len;
-	char	*str;
-
-	i = 0;
-	j = 0;
 	if (!save && !buff)
 		return (NULL);
 	if (!save && buff)
 		return (ft_strdup(buff));
 	if (save && !buff)
 		return (ft_strdup(save));
-	len = ft_strlen(save) + ft_strlen(buff);
-	str = malloc(len + 1);
-	if (!str)
-		return (NULL);
+	return (NULL);
+}
+
+static void	copy_strings(char *str, char *save, char *buff)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	j = 0;
 	while (save[i])
 	{
 		str[i] = save[i];
@@ -30,6 +41,22 @@ char	*ft_sstrjoin(char *save, char *buff)
 		j++;
 	}
 	str[i + j] = '\0';
+}
+
+char	*ft_sstrjoin(char *save, char *buff)
+{
+	int		len;
+	char	*str;
+	char	*result;
+
+	result = handle_null_cases(save, buff);
+	if (!save || !buff)
+		return (result);
+	len = ft_strlen(save) + ft_strlen(buff);
+	str = malloc(len + 1);
+	if (!str)
+		return (NULL);
+	copy_strings(str, save, buff);
 	free(save);
 	return (str);
 }
@@ -49,40 +76,4 @@ char	*join_args(int argc, char **argv)
 		i++;
 	}
 	return (args);
-}
-
-void	initialise(t_state *state, char *args)
-{
-	state->i = 0;
-	state->end = 0;
-	state->k = 0;
-	state->tow_d = 0;
-	state->start = 0;
-	state->cw = count_word(args);
-	state->tow_d = (char **)malloc((state->cw + 1) * sizeof(char *));
-}
-
-char	**split_args(char *args)
-{
-	t_state	state;
-
-	initialise(&state, args);
-	while (args[state.i])
-	{
-		while (args[state.i] && args[state.i] == ' ')
-			state.i++;
-		state.start = state.i;
-		while (args[state.i] && args[state.i] != ' ')
-			state.i++;
-		state.end = state.i;
-		if (state.start < state.end)
-		{
-			state.tow_d[state.k] = ft_strcopy(args, state.start, state.end);
-			if (!state.tow_d[state.k])
-				ftt_free(state.tow_d);
-			state.k++;
-		}
-	}
-	state.tow_d[state.k] = NULL;
-	return (state.tow_d);
 }

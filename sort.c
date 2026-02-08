@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zichajia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/08 14:04:06 by zichajia          #+#    #+#             */
+/*   Updated: 2026/02/08 14:04:09 by zichajia         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int	max_position(list_t **stack_a)
+int	max_position(t_stack **stack_a)
 {
-	list_t	*tmp;
+	t_stack	*tmp;
 	int		max_val;
 	int		max_pos;
 	int		counter;
@@ -26,9 +38,9 @@ int	max_position(list_t **stack_a)
 	return (max_pos);
 }
 
-int	sorted(list_t **stack_a)
+int	sorted(t_stack **stack_a)
 {
-	list_t	*tmp;
+	t_stack	*tmp;
 
 	if (!stack_a || !*stack_a)
 		return (1);
@@ -42,9 +54,9 @@ int	sorted(list_t **stack_a)
 	return (1);
 }
 
-int	min_position(list_t **stack)
+int	min_position(t_stack **stack)
 {
-	list_t	*tmp;
+	t_stack	*tmp;
 	int		min_val;
 	int		min_pos;
 	int		i;
@@ -66,7 +78,7 @@ int	min_position(list_t **stack)
 	return (min_pos);
 }
 
-void	sort_stack(list_t **stack_a, list_t **stack_b)
+void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 {
 	int	size;
 

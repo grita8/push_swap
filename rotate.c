@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rotate.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zichajia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/08 14:03:48 by zichajia          #+#    #+#             */
+/*   Updated: 2026/02/08 14:03:52 by zichajia         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int	rotate_stack_a(list_t **stack_a)
+int	rotate_stack_a(t_stack **stack_a)
 {
-	list_t	*first;
-	list_t	*last;
+	t_stack	*first;
+	t_stack	*last;
 
 	if (!stack_a || !(*stack_a) || !((*stack_a)->next))
 		return (0);
@@ -17,10 +29,10 @@ int	rotate_stack_a(list_t **stack_a)
 	return (1);
 }
 
-int	rotate_stack_b(list_t **stack_b)
+int	rotate_stack_b(t_stack **stack_b)
 {
-	list_t	*first;
-	list_t	*last;
+	t_stack	*first;
+	t_stack	*last;
 
 	if (!stack_b || !(*stack_b) || !((*stack_b)->next))
 		return (0);
@@ -34,7 +46,7 @@ int	rotate_stack_b(list_t **stack_b)
 	return (1);
 }
 
-int	ra(list_t **stack_a)
+int	ra(t_stack **stack_a)
 {
 	if (!rotate_stack_a(stack_a))
 		return (-1);
@@ -42,7 +54,7 @@ int	ra(list_t **stack_a)
 	return (0);
 }
 
-int	rb(list_t **stack_b)
+int	rb(t_stack **stack_b)
 {
 	if (!rotate_stack_b(stack_b))
 		return (-1);
@@ -50,7 +62,7 @@ int	rb(list_t **stack_b)
 	return (0);
 }
 
-int	rr(list_t **stack_a, list_t **stack_b, int index)
+int	rr(t_stack **stack_a, t_stack **stack_b, int index)
 {
 	if (!rotate_stack_a(stack_a) && !rotate_stack_b(stack_b))
 		return (-1);

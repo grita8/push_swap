@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils2.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zichajia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/08 14:06:41 by zichajia          #+#    #+#             */
+/*   Updated: 2026/02/08 14:06:45 by zichajia         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	is_it_alpha(char *str, int *i)
@@ -13,7 +25,7 @@ int	is_it_alpha(char *str, int *i)
 	return (0);
 }
 
-void	check_int_overflow(long number, list_t *list, char **two_d, char *args)
+void	check_int_overflow(long number, t_stack *list, char **two_d, char *args)
 {
 	if (number > INT_MAX || number < INT_MIN)
 	{
@@ -25,7 +37,7 @@ void	check_int_overflow(long number, list_t *list, char **two_d, char *args)
 	}
 }
 
-void	else_of_atoi(list_t **list, char **two_d, char *args)
+void	else_of_atoi(t_stack **list, char **two_d, char *args)
 {
 	write(2, "Error\n", 6);
 	free_stack(*list);
@@ -41,13 +53,12 @@ void	init_vars(t_atoa_state *vars)
 	vars->signe = 1;
 }
 
-int	ff_atoi(char *str, list_t *list, char **two_d, char *args)
+int	ff_atoi(char *str, t_stack *list, char **two_d, char *args)
 {
 	t_atoa_state	vars;
 
 	init_vars(&vars);
-	while (str[vars.i] == '\t' || str[vars.i] == '\n'
-		|| str[vars.i] == '\v'
+	while (str[vars.i] == '\t' || str[vars.i] == '\n' || str[vars.i] == '\v'
 		|| str[vars.i] == '\f' || str[vars.i] == '\r'
 		|| str[vars.i] == ' ')
 		vars.i++;
